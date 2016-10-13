@@ -12,19 +12,33 @@
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 20px;
 }
-/*
-h1, h2, h3, h4 {
-    put new font here
-} */
 
 .save {
     float: right;
 }
 
+.search-button {
+    font-size: 20px;
+}
+
+.info {
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+    background-color: #ccff7f;
+}
+
+.info-text {
+  font-weight: 800;
+  font-size: 24px;
+}
+
 .book-form textarea, .book-form input {
-    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {

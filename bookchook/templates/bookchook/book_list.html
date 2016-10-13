@@ -6,5 +6,9 @@
       <h3>{{ book.name }}</h2>
       <h4>{{ book.author }}</h3>
     </div>
+  {% empty %}
+  <div class="info">
+    <p class="info-text">Nah, nothing here.</p>
+  </div>
   {% endfor %}
 {% endblock %}

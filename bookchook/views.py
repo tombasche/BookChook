@@ -10,7 +10,10 @@ def book_list(request):
 def book_search(request):
     if request.method == "GET":
         search_query = request.GET.get('search_box', None)
-        books = Book.objects.filter(name__icontains=search_query)
+        if search_query is not None:
+            books = Book.objects.filter(name__icontains=search_query)
+        else:
+            return render(request, 'bookchook/book_search.html', {})
     return render(request, 'bookchook/book_list.html', {'books': books})
 
 
