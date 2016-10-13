@@ -3,8 +3,8 @@
 {% block content %}
   {% for book in books %}
     <div class="book">
-      <h3>{{ book.name }}</h2>
-      <h4>{{ book.author }}</h3>
+      <h5>{{ book.name }}</h5>
+      <h6>{{ book.author }}</h6>
     </div>
   {% empty %}
   <div class="info">

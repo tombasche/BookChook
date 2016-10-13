@@ -1,0 +1,19 @@
+{% extends "bookchook/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<div>{{ form.username.label_tag }}</div>
+<div>{{ form.username }}</div>
+<div>{{ form.password.label_tag }}</div>
+<div>{{ form.password }}</div>
+<input type="submit" class="login btn btn-default" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}

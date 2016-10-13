@@ -41,6 +41,13 @@
     width: 60%;
 }
 
+.page-footer {
+  position: fixed;
+  margin-left: 20px;
+  width: 50%;
+  bottom: 0;
+}
+
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
@@ -49,5 +56,5 @@
 }
 
 .book {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }

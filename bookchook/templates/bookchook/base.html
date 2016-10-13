@@ -9,7 +9,10 @@
   <body>
     <div class="page-header">
       <h2><a href="/">BookChook</a></h2>
+      {% if user.is_authenticated %}
       <a href="{% url 'book_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+      <a href="{% url 'logout_view' %}">Logout</a>
+      {% endif %}
     </div>
 
     <div class="content container">
@@ -21,7 +24,7 @@
        </div>
      </div>
      <div class="page-footer">
-       <p></p>
+       <p><a href="https://github.com/tombasche/BookChook">Check it out on GitHub!</a></p>
      </div>
   </body>
 </html>
