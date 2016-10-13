@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>BookChook</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <div class="page-header">
+      <h2><a href="/">BookChook</a></h2>
+      <a href="{% url 'book_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+
+    <div class="content container">
+       <div class="row">
+           <div class="col-md-8">
+           {% block content %}
+           {% endblock %}
+           </div>
+       </div>
+     </div>
+     <div class="page-footer">
+       <p></p>
+     </div>
+  </body>
+</html>

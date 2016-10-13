@@ -1,0 +1,10 @@
+{% extends 'bookchook/base.html' %}
+
+{% block content %}
+  {% for book in books %}
+    <div class="book">
+      <h3>{{ book.name }}</h2>
+      <h4>{{ book.author }}</h3>
+    </div>
+  {% endfor %}
+{% endblock %}
