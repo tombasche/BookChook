@@ -1,15 +1,26 @@
 {% extends 'bookchook/base.html' %}
 
 {% block content %}
-  {% for book in books %}
     <div class="book">
-      <h5>{{ book.name }}</h5>
-      <h6>{{ book.author }}</h6>
-      <h6>{{ book.series }}</h6>
+      {% if books %}
+      <table>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Series</th>
+        <th>Tags</th>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.name }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.series | default_if_none:"--"  }}</td>
+          <td>{% for tag in book.tags.all %}{{ tag.name }},{% endfor %}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="info">
+        <p class="info-text">Nah, nothing here.</p>
+      </div>
+      {% endif %}
     </div>
-  {% empty %}
-  <div class="info">
-    <p class="info-text">Nah, nothing here.</p>
-  </div>
-  {% endfor %}
 {% endblock %}
