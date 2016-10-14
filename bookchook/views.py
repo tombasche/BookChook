@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.core.exceptions import ValidationError
 from .models import Book, Series
 from .forms import BookForm, SeriesForm
+from taggit.forms import *
 
 def logout_view(request):
     logout(request)
@@ -22,12 +23,13 @@ def book_search(request):
     if request.method == "GET":
         search_query = request.GET.get('search_box', None)
         if search_query is not None:
-            books = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query)
+            books = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name=search_query) | Book.objects.filter(series__name__icontains=search_query).order_by('author','series__name', 'series__number')
+            books = books.distinct() #get unique records 
             return render(request, 'bookchook/book_list.html', {'books': books})
         else:
             return render(request, 'bookchook/book_search.html', {})
-    books = Book.objects.filter(user=request.user)
-    return render(request, 'bookchook/book_list.html', {'books': books})
+    books = Book.objects.filter(user=request.user).order_by('author','series__name', 'series__number')
+    return render(request, 'bookchook/book_list.html',  {'books': books})
 
 @login_required
 def series_new(request):
@@ -39,9 +41,8 @@ def series_new(request):
             if not existingSeries:
                 series.user = request.user
                 series.save()
-                allseries = Series.objects.filter(user=request.user)
                 form = BookForm()
-                return render(request, 'bookchook/book_form.html', {'form': form})
+                return redirect('/book/new')
             else:
                 form = SeriesForm()
                 messages.error(request, "This series already exists!")
@@ -52,24 +53,22 @@ def series_new(request):
     return render(request, 'bookchook/series_form.html', {'form': form})
 
 @login_required
-def series_detail(request, pk):
-    series = get_object_or_404(Series, pk=pk)
-    books = Book.objects.filter(series__name=series.name)
-    print books
-    return render(request, 'bookchook/series_detail.html', {'books': books})
-
-@login_required
 def book_new(request):
     if request.method == "POST":
         form = BookForm(request.POST)
         if form.is_valid():
             book = form.save(commit=False)
-            existingBook = Book.objects.filter(name__icontains=book.name, user=request.user)
+            existingBook = Book.objects.filter(name=book.name, user=request.user)
             if not existingBook:
                 book.user = request.user
+                book_tags = request.POST.get('tag_box', None)
                 book.save()
+                words = book_tags.split(" ")
+                for tag in words:
+                    book.tags.add(tag)
+                    print tag
                 books = Book.objects.filter(user=request.user)
-                return render(request, 'bookchook/book_list.html', {'books': books})
+                return render(request, 'bookchook/book_list.html',  {'books': books})
             else:
                 form = BookForm()
                 messages.error(request, "This book already exists!")
