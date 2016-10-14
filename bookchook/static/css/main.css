@@ -1,3 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    padding-right: 50px;
+}
+
 .page-header {
     background-color: #636363;
     margin-top: 0;
@@ -6,7 +30,7 @@
 
 .page-header h2, .page-header h2 a, .page-header h2 a:visited, .page-header h2 a:active {
     color: #ffffff;
-    font-size: 36pt;
+    font-size: 32pt;
     text-decoration: none;
     display: inline;
 }
@@ -41,18 +65,16 @@
     width: 60%;
 }
 
-.page-footer {
-  position: fixed;
-  margin-left: 20px;
-  width: 50%;
-  bottom: 0;
-}
-
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
     font-size: 26pt;
     margin-right: 20px;
+}
+
+.logout a {
+  color: #ffffff !important;
+  font-size: 16px;
 }
 
 .book {
