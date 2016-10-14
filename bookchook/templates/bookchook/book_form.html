@@ -1,12 +1,22 @@
 {% extends 'bookchook/base.html' %}
 
 {% block content %}
-    <h1>New book</h1>
     <form method="POST" class="book-form">{% csrf_token %}
-        {{ form.as_p }}
-        <input id="tag_box" type="text" name="tag_box" placeholder="Add tags..." >
-        <a href="{% url 'series_new' %}">Add Series</a>
+      <div class="container">
+        <h1>New book</h1>
+        <label>Name:</label>{{ form.name }}
+        <br/>
+        <label>Author:</label>{{ form.author }}
+        <br/>
+        <label>Series:</label>{{ form.series }}
+        <a href="{% url 'series_new' %}"><span class="glyphicon glyphicon-plus"></span>Add Series</a>
+        <br/><br/>
+        <div data-tip="Enter words separated by spaces">
+          <input id="tag_box" type="text" name="tag_box" placeholder="Add tags..." >
+        </div>
+        <br/><br/>
         <button type="submit" class="save btn btn-default">Save</button>
+      </div>
     </form>
     <br/>
     <br/>

@@ -1,9 +1,11 @@
 {% extends 'bookchook/base.html' %}
 
 {% block content %}
-    <h1>Chook a book</h1>
-    <form method="GET" class="book-form">
-        <input  id="search_box" type="text" name="search_box"  placeholder="Search by book, series or tag..." >
+    <form method="GET">
+      <div class="container">
+        <h1>Chook a book</h1>
+        <input id="search_box" type="text" name="search_box" placeholder="Search by book, series or tag..." >
         <button type="submit" class="save search-button btn btn-default">Bwarrk</button>
+      </div>
     </form>
 {% endblock %}

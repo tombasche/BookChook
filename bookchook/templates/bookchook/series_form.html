@@ -1,10 +1,15 @@
 {% extends 'bookchook/base.html' %}
 
 {% block content %}
-    <h1>New Series</h1>
     <form method="POST" class="book-form">{% csrf_token %}
-        {{ form.as_p }}
+      <div class="container">
+        <h1>New Series</h1>
+        <label>Name:</label>{{ form.name }}
+        <br/>
+        <label>Number:</label>{{ form.number }}
+        <br/><br/>
         <button type="submit" class="save btn btn-default">Save</button>
+      </div>
     </form>
     <br/>
     <br/>
