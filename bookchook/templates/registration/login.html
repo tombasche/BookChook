@@ -8,14 +8,15 @@
 </div>
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<div>{{ form.username.label_tag }}</div>
-<div>{{ form.username }}</div>
-<div>{{ form.password.label_tag }}</div>
-<div>{{ form.password }}</div>
-<input type="submit" class="login btn btn-default" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+  <form method="post" action="{% url 'login' %}">{% csrf_token %}
+    <div class="container">
+      <div>{{ form.username.label_tag }}</div>
+      <div>{{ form.username }}</div>
+      <div>{{ form.password.label_tag }}</div>
+      <div>{{ form.password }}</div>
+      <input type="submit" class="btn btn-default" value="login" />
+      <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+  </form>
 
 {% endblock %}
