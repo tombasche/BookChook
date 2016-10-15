@@ -7,6 +7,6 @@ Add books you own and then search for them to check if you own it or not. I find
 
 - virtualenv myenv
 - Activate the virtual env
-- pip install django
+- pip install -r mysite/requirements.txt
 - python manage.py runserver
 - Point browser to localhost:8000
