@@ -15,6 +15,7 @@
       {% if user.is_authenticated %}
       <a href="{% url 'book_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
       <a href="{% url 'logout_view' %}" class="logout">Logout</a>
+      <br/><p class="username">Hi, {{user.get_username}}!</p>
       {% endif %}
     </div>
 
