@@ -102,29 +102,23 @@ def book_edit(request, pk):
         form = BookForm(request.POST, instance=editBook)
         if form.is_valid():
             book = form.save(commit=False)
-            existingBook = Book.objects.filter(name=book.name, user=request.user)
-            if not existingBook:
-                book.user = editBook.user
-                book_tags = request.POST.get('tag_box', None)
-                print book.number, book.series
+            book.user = editBook.user
+            book_tags = request.POST.get('tag_box', None)
+            print book.number, book.series
 
-                if (book.number is not None and book.series is None) and book.number >= 1:
-                    messages.error(request, "Book must have series in order to have a series number")
-                    return render(request, 'bookchook/book_form.html', {'form': form})
-
-                book.save()
-                words = book_tags.split(",")
-                for tag in words:
-                    book.tags.add(tag)
-                    print tag
-                messages.error(request, None)
-                global SEARCH_RESULTS
-                SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
-                return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
-            else:
-                #form = BookForm()
-                messages.error(request, "This book already exists!")
+            if (book.number is not None and book.series is None) and book.number >= 1:
+                messages.error(request, "Book must have series in order to have a series number")
                 return render(request, 'bookchook/book_form.html', {'form': form})
+
+            book.save()
+            words = book_tags.split(",")
+            for tag in words:
+                book.tags.add(tag)
+                print tag
+            messages.error(request, None)
+            global SEARCH_RESULTS
+            SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
+            return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
     else:
         form = BookForm(instance=Book.objects.get(id=pk))
         messages.error(request,None)
