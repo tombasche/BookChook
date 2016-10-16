@@ -23,7 +23,7 @@ def book_search(request):
     if request.method == "GET":
         search_query = request.GET.get('search_box', None)
         if search_query is not None:
-            books = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query) | Book.objects.filter(author__icontains=search_query) | Book.objects.filter(series__name__icontains=search_query).order_by('author','series__name', 'number')
+            books = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query, user=request.user) | Book.objects.filter(author__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query, user=request.user).order_by('author','series__name', 'number')
             books = books.distinct() #get unique records
             return render(request, 'bookchook/book_list.html', {'books': books})
         else:
