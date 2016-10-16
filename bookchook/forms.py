@@ -5,7 +5,7 @@ from taggit.forms import *
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ('name', 'author', 'number', 'series')
+        fields = ('name', 'author', 'number', 'series', 'location')
         widgets = {
             'series' : forms.Select(attrs={"onChange":'displaySeriesNumber()'}),
             'number' : forms.NumberInput(attrs={"class": "series-number"})

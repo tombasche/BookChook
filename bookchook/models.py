@@ -18,6 +18,7 @@ class Book(models.Model):
     series = models.ForeignKey(Series, null=True, blank=True)
     number = models.IntegerField(null=True, blank=True)
     tags = TaggableManager()
+    location = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.name

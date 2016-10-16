@@ -8,6 +8,7 @@
         <th>Author</th>
         <th>Series</th>
         <th>Number in Series</th>
+        <th>Location</th>
         <th>Tags</th>
         <th>Actions</th>
         {% for book in books %}
@@ -16,6 +17,7 @@
           <td>{{ book.author }}</td>
           <td>{{ book.series | default_if_none:"--"  }}</td>
           <td>{{ book.number | default_if_none:"--"  }}</td>
+          <td>{{ book.location | default_if_none:"--"  }}</td>
           <td>{{ book.tags.all | join:","}}</td>
           <td>
             <a href="{% url 'book_edit' pk=book.pk %}" class="glyphicon glyphicon-pencil"></a>
