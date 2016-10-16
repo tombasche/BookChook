@@ -26,7 +26,8 @@ def book_search(request):
             books = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query) | Book.objects.filter(author__icontains=search_query) | Book.objects.filter(series__name__icontains=search_query).order_by('author','series__name', 'number')
             books = books.distinct() #get unique records
             return render(request, 'bookchook/book_list.html', {'books': books})
-
+        else:
+            return render(request, 'bookchook/book_search.html', {})
     books = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
     return render(request, 'bookchook/book_list.html',  {'books': books})
 
