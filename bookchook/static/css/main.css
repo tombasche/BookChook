@@ -11,6 +11,14 @@ html,body
   margin-top: 150px;
 }
 
+.glyphicon-pencil {
+  color: green;
+}
+
+.glyphicon-remove {
+  color: red;
+}
+
 .page-header {
     background-color: #636363;
     position: fixed;
