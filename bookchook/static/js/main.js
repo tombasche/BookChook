@@ -6,6 +6,8 @@ function displaySeriesNumber() {
     document.getElementById("seriesNumber").style.visibility = "visible";
   }
   else {
+      var num = document.getElementById("id_number");
+      num.value = ''; 
       document.getElementById("seriesNumber").style.visibility = "hidden";
   }
 }
