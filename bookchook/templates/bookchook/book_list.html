@@ -7,13 +7,16 @@
         <th>Name</th>
         <th>Author</th>
         <th>Series</th>
+        <th>Number in Series</th>
         <th>Tags</th>
         {% for book in books %}
         <tr>
           <td>{{ book.name }}</td>
           <td>{{ book.author }}</td>
           <td>{{ book.series | default_if_none:"--"  }}</td>
-          <td>{% for tag in book.tags.all %}{{ tag.name }},{% endfor %}</td>
+          <td>{{ book.number | default_if_none:"--"  }}</td>
+          <td>{{ book.tags.all | join:","}}
+          </td>
         </tr>
         {% endfor %}
       </table>

@@ -8,15 +8,20 @@
         <br/>
         <label>Author:</label>{{ form.author }}
         <br/>
-        <label>Series:</label>{{ form.series }}
+        <label>Series:</label>{{ form.series }}  <a href="{% url 'series_new' %}"><span class="glyphicon glyphicon-plus"></span>Add Series</a>
         <br/>
-        <a href="{% url 'series_new' %}"><span class="glyphicon glyphicon-plus"></span>Add Series</a>
+        <span id="seriesNumber">
+          <label class="long-label">Number in Series:</label>{{ form.number }}
+        </span>
         <br/><br/>
         <div data-tip="Enter words separated by spaces">
           <input id="tag_box" type="text" name="tag_box" placeholder="Add tags..." >
         </div>
         <br/><br/>
-        <button type="submit" class="save btn btn-default">Save</button>
+        <div class="save-container">
+          <button type="submit" class="save btn btn-default">Save</button>
+        </div>
+
       </div>
     </form>
     <br/>
