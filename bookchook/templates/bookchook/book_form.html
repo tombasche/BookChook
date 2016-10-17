@@ -16,9 +16,10 @@
         <br/>
         <label>Location:</label>{{ form.location }}
         <br/>
-        <div data-tip="Enter words separated by commas">
-          <input id="tag_box" type="text" name="tag_box" placeholder="Add tags..." >
-        </div>
+        <label>Tags:</label>
+        <span data-tip="Enter words separated by commas" class="tag-box">
+          {{ tags.tags }}
+        </span>
         <br/><br/>
         <div class="save-container">
           <button type="submit" class="save btn btn-default">Save</button>

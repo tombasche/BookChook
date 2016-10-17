@@ -25,6 +25,7 @@ html,body
     margin-top: 0;
     width: 100%;
     padding: 20px 20px 20px 40px;
+    z-index: 5;
 }
 
 .page-footer {
@@ -67,8 +68,8 @@ label {
   text-align: left;
 }
 
-#tag_box {
-  margin-left: 70px;
+.tag-box {
+  margin-left: -5px;
 }
 
 .container {

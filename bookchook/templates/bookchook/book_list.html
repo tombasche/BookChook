@@ -18,11 +18,14 @@
           <td>{{ book.series | default_if_none:"--"  }}</td>
           <td>{{ book.number | default_if_none:"--"  }}</td>
           <td>{{ book.location | default_if_none:"--"  }}</td>
-          <td>{{ book.tags.all | join:","}}</td>
+          <td>
+            {% for value in book.tags.all %}
+              {{ value }}
+            {% endfor %}
+          </td>
           <td>
             <a href="{% url 'book_edit' pk=book.pk %}" class="glyphicon glyphicon-pencil"></a>
             <a href="{% url 'book_delete' pk=book.pk %}" class="glyphicon glyphicon-remove"></a>
-
           </td>
         </tr>
         {% endfor %}

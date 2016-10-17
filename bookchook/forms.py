@@ -11,6 +11,9 @@ class BookForm(forms.ModelForm):
             'number' : forms.NumberInput(attrs={"class": "series-number"})
         }
 
+class BookTagsForm(forms.Form):
+    tags = forms.CharField()
+
 
 class SeriesForm(forms.ModelForm):
     class Meta:
