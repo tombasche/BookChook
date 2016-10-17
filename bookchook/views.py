@@ -6,7 +6,9 @@ from django.shortcuts import HttpResponseRedirect
 from django.db.models import Q
 from django.core.exceptions import ValidationError
 from .models import Book, Series
-from .forms import BookForm, SeriesForm, BookTagsForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from .forms import BookForm, SeriesForm, BookTagsForm, UserForm
 from taggit.forms import *
 
 SEARCH_RESULTS = None
@@ -129,10 +131,21 @@ def book_edit(request, pk):
 
     return render(request, 'bookchook/book_form.html', {'form': form, 'tags':tagForm})
 
-
+@login_required
 def book_delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
     Book.objects.filter(id=book.id).delete()
     global SEARCH_RESULTS
     SEARCH_RESULTS = SEARCH_RESULTS.exclude(id=book.id)
     return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
+
+def user_new(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(request, new_user)
+            return render(request, 'bookchook/book_list.html', {})
+    else:
+        form = UserForm()
+    return render(request, 'bookchook/user_form.html', {'form': form})

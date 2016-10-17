@@ -44,7 +44,7 @@ html,body
 }
 
 #seriesNumber {
-  visibility: hidden;
+  visibility: visible;
 }
 
 label.long-label {
