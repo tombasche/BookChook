@@ -168,6 +168,7 @@ def user_view(request, pk):
     books = Book.objects.filter(user=user)
     return render(request, 'bookchook/user_view.html', {'user': user, 'books':books})
 
+@login_required
 def user_list(request):
     users = User.objects.all()
     return render(request, 'bookchook/user_list.html', {'users': users})
