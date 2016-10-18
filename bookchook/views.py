@@ -41,6 +41,18 @@ def book_search(request):
     return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
 
 @login_required
+def user_search(request):
+    if request.method == "GET":
+        search_query = request.GET.get('search_box', None)
+        if search_query is not None:
+            search_results = User.objects.filter(username__icontains=search_query).order_by('username')
+            return render(request, 'bookchook/user_list.html', {'users': search_results})
+        else:
+            return render(request, 'bookchook/user_search.html', {})
+    search_results = Book.objects.all().order_by('').order_by('author','series__name', 'number')
+    return render(request, 'bookchook/user_list.html', {'users': search_results})
+
+@login_required
 def series_new(request):
     if request.method == "POST":
         form = SeriesForm(request.POST)
@@ -149,3 +161,13 @@ def user_new(request):
     else:
         form = UserForm()
     return render(request, 'bookchook/user_form.html', {'form': form})
+
+@login_required
+def user_view(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    books = Book.objects.filter(user=user)
+    return render(request, 'bookchook/user_view.html', {'user': user, 'books':books})
+
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'bookchook/user_list.html', {'users': users})

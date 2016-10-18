@@ -15,6 +15,14 @@ html,body
   color: green;
 }
 
+div.page-header a {
+  color: white;
+}
+
+div.page-header .username {
+  color: black;
+}
+
 .glyphicon-remove {
   color: red;
 }
@@ -77,6 +85,18 @@ label {
   clear: both;
 }
 
+.container-book-list {
+  width: 100%;
+  margin-left: 50px;
+  clear: both;
+}
+
+.container-user-list {
+  width: 100%;
+  margin-left: 500px;
+  clear: both;
+}
+
 .container input, select {
   margin-left: 15px;
   width: 50%;
@@ -85,10 +105,6 @@ label {
 
 .content {
     margin-left: 20px;
-}
-
-.username {
-  color: #fff;
 }
 
 th, td {

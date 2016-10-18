@@ -1,0 +1,22 @@
+{% extends 'bookchook/base.html' %}
+
+{% block content %}
+    <div class="container-user-list">
+      {% if users %}
+      <table style="margin-bottom: 50px;">
+        <th>Name</th>
+        <th>Email Address</th>
+        {% for owner in users %}
+        <tr>
+          <td><a href="{% url 'user_view' pk=owner.id %}">{{ owner.username }}</a></td>
+          <td>{{ owner.email }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="info">
+        <p class="info-text">Nah, nothing here.</p>
+      </div>
+      {% endif %}
+    </div>
+{% endblock %}
