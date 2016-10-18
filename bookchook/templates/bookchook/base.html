@@ -10,24 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    <div class="content">
+      <div class="page-header">
+        <h2><a href="/">BookChook</a></h2>
+        {% if user.is_authenticated %}
+        <div class="links">
+          <a href="{% url 'logout_view' %}" class="logout header-link">Logout</a>
+          <a href="{% url 'user_search' %}" class="header-link"><span class="glyphicon glyphicon-search"></span>Search for a user</a>
+        </div>
+        <a href="{% url 'book_new' %}" class="top-menu header-link"><span class="glyphicon glyphicon-plus"></span>Add a Book</a>
+        <div class="username">Hi, {{request.user.username.title}}!</div>
+        {% endif %}
+      </div>
 
-    <div class="page-header">
-      <h2><a href="/">BookChook</a></h2>
-      {% if user.is_authenticated %}
-      <a href="{% url 'book_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-      <a href="{% url 'logout_view' %}" class="logout">Logout</a>
-      <br/><span class="username">Hi, {{request.user.username.title}}!</span>
-      <a href="{% url 'user_search' %}"><span class="glyphicon glyphicon-search"></span>Search for a user</a>
-      {% endif %}
-    </div>
+      <div class="row">
+        {% block content %}
+        {% endblock %}
+       </div>
 
-    <div class="row">
-      {% block content %}
-      {% endblock %}
+       <div class="page-footer">
+         <a href="https://github.com/tombasche/BookChook">Check it out on GitHub!</a>
+       </div>
      </div>
-
-     <div class="page-footer">
-       <a href="https://github.com/tombasche/BookChook">Check it out on GitHub!</a>
-     </div>
+    <div class="background-image"></div>
   </body>
 </html>
