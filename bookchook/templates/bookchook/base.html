@@ -18,7 +18,7 @@
           <a href="{% url 'logout_view' %}" class="logout header-link">Logout</a>
           <a href="{% url 'user_search' %}" class="header-link"><span class="glyphicon glyphicon-search"></span>Search for a user</a>
         </div>
-        <a href="{% url 'book_new' %}" class="top-menu header-link"><span class="glyphicon glyphicon-plus"></span>Add a Book</a>
+        <a href="{% url 'book_new' %}" class="top-menu header-link" id="add-book"><span class="glyphicon glyphicon-plus"></span>Add a Book</a>
         <div class="username">Hi, {{request.user.username.title}}!</div>
         {% endif %}
       </div>
@@ -26,10 +26,6 @@
       <div class="row">
         {% block content %}
         {% endblock %}
-       </div>
-
-       <div class="page-footer">
-         <a href="https://github.com/tombasche/BookChook">Check it out on GitHub!</a>
        </div>
      </div>
     <div class="background-image"></div>
