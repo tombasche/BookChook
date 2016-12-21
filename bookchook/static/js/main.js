@@ -16,3 +16,12 @@ function displaySeriesNumber() {
       document.getElementById("seriesNumber").style.visibility = "hidden";
   }
 }
+
+
+document.onkeyup=function(e){
+  var e = e || window.event; // for IE to cover IEs window event-object
+  // shift + to add a book
+  if(e.shiftKey && e.which == 107) {
+    document.getElementById('add-book').click();
+  }
+}
