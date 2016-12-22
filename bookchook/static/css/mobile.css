@@ -1,0 +1,350 @@
+.content {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table-link {
+  color: fff;
+}
+
+.table-link:hover {
+  color: fff;
+  filter: blur(1px);
+  text-decoration: none;
+}
+
+.search-header {
+  color: #fff;
+}
+
+.background-image {
+  background-image: url(../books.png);
+  background-position: center;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  margin-top: 150px;
+}
+
+.glyphicon-pencil {
+  color: green;
+}
+
+div.page-header a {
+  color: white;
+}
+
+div.page-header div.links {
+  display: inline;
+  margin-left: 100px;
+}
+
+div.page-header .username {
+  color: white;
+}
+
+.glyphicon-remove {
+  color: red;
+}
+
+.page-header {
+  position: fixed;
+  margin-top: 0;
+  width: 100%;
+  padding: 20px 20px 20px 40px;
+  z-index: 5;
+  border-bottom: 0;
+  background-color: rgba(52, 73, 94, 0.65);
+}
+
+.page-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+#search_box {
+  width: 100%;
+
+}
+
+#seriesNumber {
+  visibility: visible;
+}
+
+label.long-label {
+  width: 125px;
+}
+
+span input.series-number {
+  width: 10%;
+}
+
+.page-header h2, .page-header h2 a, .page-header h2 a:visited, .page-header h2 a:active {
+  color: #ffffff;
+  font-size: 32pt;
+  text-decoration: none;
+  display: inline;
+}
+
+label {
+  display: inline-block;
+  width: 55px;
+  text-align: left;
+  color: #fff;
+}
+
+.tag-box {
+  margin-left: -5px;
+}
+
+.backer {
+  z-index: -1;
+  background-color: rgba(52, 73, 94, 0.65);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.container {
+  width: 375px;
+  clear: both;
+}
+
+.container-book-list {
+  width: 100%;
+  padding: 0 50px;
+  clear: both;
+}
+
+.container-user-list {
+  width: 100%;
+  margin-left: 500px;
+  clear: both;
+}
+
+.container input, select {
+  margin-left: 15px;
+  width: 50%;
+  clear: both;
+}
+
+.book-table {
+  background: #34495E;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:not(:first-child):hover {
+    background-color: #243342;
+}
+
+td {
+  color: #fff;
+}
+
+th {
+  color: #dd5;
+}
+
+.save-container {
+  width: 100%;
+  height: 10%;
+}
+
+.save {
+  width:100px;
+  margin: -20px -30px;
+  position:relative;
+  top:50%;
+  left:50%;
+  font-weight: bold;
+	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
+	background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
+	background-color:#2dabf9;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.save:hover, .search-button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
+	background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
+	background-color:#0688fa;
+}
+
+.search-button {
+  font-size: 20px;
+  -moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
+  -webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
+  box-shadow:inset 0px -3px 7px 0px #29bbff;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
+  background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+  background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+  background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+  background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+  background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
+  background-color:#2dabf9;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  border:1px solid #0b0e07;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  padding:9px 23px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #263666;
+}
+
+
+.info {
+  padding: 15px;
+  margin-top: 10px;
+  margin-left: 3px;
+  background-color: #ccff7f;
+}
+
+.info-text {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.form-label {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.form-field {
+  margin-top: 12px;
+  display: inline-block;
+  width: 70%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+  color: #ffffff;
+  float: right;
+  font-size: 26pt;
+  margin-right: 20px;
+}
+
+.logout a {
+  color: #ffffff !important;
+  font-size: 16px;
+}
+
+.book {
+  margin-bottom: 30px;
+}
+
+[data-tip] {
+  position:relative;
+
+}
+[data-tip]:before {
+  content:'';
+  /* hides the tooltip when not hovered */
+  display:none;
+  content:'';
+  display:none;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #1a1a1a;
+  position:absolute;
+  top:30px;
+  left:35px;
+  z-index:8;
+  font-size:0;
+  line-height:0;
+  width:0;
+  height:0;
+  position:absolute;
+  top:30px;
+  left:35px;
+  z-index:8;
+  font-size:0;
+  line-height:0;
+  width:0;
+  height:0;
+}
+[data-tip]:after {
+  display:none;
+  content:attr(data-tip);
+  position:absolute;
+  top:35px;
+  left:0px;
+  padding:5px 8px;
+  background:#1a1a1a;
+  color:#fff;
+  z-index:9;
+  font-size: 0.75em;
+  height:25px;
+  line-height:18px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space:nowrap;
+  word-wrap:normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+  display:block;
+}

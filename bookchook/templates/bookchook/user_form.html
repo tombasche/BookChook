@@ -3,10 +3,12 @@
 {% block content %}
     <form method="POST" class="book-form">{% csrf_token %}
       <div class="container">
-        <h1>New User</h1>
-        {{form.as_p}}
-        <div class="save-container">
-          <button type="submit" class="save btn btn-default">Save</button>
+        <div class="backer">
+          <h1 class="search-header">New User</h1>
+          {{form.as_p}}
+          <div class="save-container">
+            <button type="submit" class="save btn btn-default">Save</button>
+          </div>
         </div>
       </div>
     </form>
