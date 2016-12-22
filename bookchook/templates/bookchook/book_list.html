@@ -3,17 +3,17 @@
 {% block content %}
     <div class="container-book-list">
       {% if books %}
-      <table style="margin-bottom: 50px;">
+      <table class="book-table">
         <th>Name</th>
         <th>Author</th>
         <th>Series</th>
         <th>Number in Series</th>
         <th>Location</th>
         <th>Tags</th>
-        <th>Actions</th>
+        <th>Remove</th>
         {% for book in books %}
         <tr>
-          <td>{{ book.name }}</td>
+          <td><a href="{% url 'book_edit' pk=book.pk %}" class="table-link">{{ book.name }}</a></td>
           <td>{{ book.author }}</td>
           <td>{{ book.series | default_if_none:"--"  }}</td>
           <td>{{ book.number | default_if_none:"--"  }}</td>
@@ -24,8 +24,7 @@
             {% endfor %}
           </td>
           <td>
-            <a href="{% url 'book_edit' pk=book.pk %}" class="glyphicon glyphicon-pencil"></a>
-            <a href="{% url 'book_delete' pk=book.pk %}" class="glyphicon glyphicon-remove"></a>
+            <a href="{% url 'book_delete' pk=book.pk %}" class="glyphicon glyphicon-remove" onclick="return confirm('Are you sure you would like to delete this book?');"></a>
           </td>
         </tr>
         {% endfor %}

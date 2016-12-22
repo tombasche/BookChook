@@ -3,28 +3,29 @@
 {% block content %}
     <form method="POST" class="book-form">{% csrf_token %}
       <div class="container">
-        <h1 class="search-header">Edit book</h1>
-        <label>Name:</label>{{ form.name }}
-        <br/>
-        <label>Author:</label>{{ form.author }}
-        <br/>
-        <label>Series:</label>{{ form.series }}  <a href="{% url 'series_new' %}"><span class="glyphicon glyphicon-plus"></span>Add Series</a>
-        <br/>
-        <span id="seriesNumber">
-          <label class="long-label">Number in Series:</label>{{ form.number }}
-        </span>
-        <br/>
-        <label>Location:</label>{{ form.location }}
-        <br/>
-        <label>Tags:</label>
-        <span data-tip="Enter words separated by commas" class="tag-box">
-          {{ tags.tags }}
-        </span>
-        <br/><br/>
-        <div class="save-container">
-          <button type="submit" class="save btn btn-default">Save</button>
+        <div class="backer">
+          <h1 class="search-header">Edit book</h1>
+          <label>Name:</label>{{ form.name }}
+          <br/>
+          <label>Author:</label>{{ form.author }}
+          <br/>
+          <label>Series:</label>{{ form.series }}  <a href="{% url 'series_new' %}" class="table-link"><span class="glyphicon glyphicon-plus"></span>Add Series</a>
+          <br/>
+          <span id="seriesNumber">
+            <label class="long-label">Number in Series:</label>{{ form.number }}
+          </span>
+          <br/>
+          <label>Location:</label>{{ form.location }}
+          <br/>
+          <label>Tags:</label>
+          <span data-tip="Enter words separated by commas" class="tag-box">
+            {{ tags.tags }}
+          </span>
+          <br/><br/>
+          <div class="save-container">
+            <button type="submit" class="save btn btn-default">Save</button>
+          </div>
         </div>
-
       </div>
     </form>
     <br/>

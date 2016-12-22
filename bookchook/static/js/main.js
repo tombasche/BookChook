@@ -17,7 +17,6 @@ function displaySeriesNumber() {
   }
 }
 
-
 document.onkeyup=function(e){
   var e = e || window.event; // for IE to cover IEs window event-object
   // shift + to add a book
