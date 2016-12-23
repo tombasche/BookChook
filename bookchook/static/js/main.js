@@ -19,8 +19,8 @@ function displaySeriesNumber() {
 
 document.onkeyup=function(e){
   var e = e || window.event; // for IE to cover IEs window event-object
-  // shift + to add a book
-  if(e.shiftKey && e.which == 107) {
+  // + to add a book
+  if (e.which == '65' && document.getElementsByClassName('book-form').length == 0) {
     document.getElementById('add-book').click();
   }
 }
