@@ -1,7 +1,7 @@
 {% extends 'bookchook/base.html' %}
 
 {% block content %}
-    <form method="POST" class="book-form">{% csrf_token %}
+    <form method="POST" class="book-form" onsubmit="wipeCookies()">{% csrf_token %}
       <div class="container">
         <div class="backer">
           <h1 class="search-header">Edit book</h1>
