@@ -30,14 +30,14 @@ def book_search(request):
         search_query = request.GET.get('search_box', None)
         if search_query is not None:
             global SEARCH_RESULTS
-            SEARCH_RESULTS = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query, user=request.user) | Book.objects.filter(author__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query, user=request.user).order_by('author','series__name', 'number')
+            SEARCH_RESULTS = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query, user=request.user) | Book.objects.filter(author__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query, user=request.user).order_by('series__name', 'number', 'author')
             global SEARCH_RESULTS
             SEARCH_RESULTS = SEARCH_RESULTS.distinct() #get unique records
             return render(request, 'bookchook/book_list.html', {'books': SEARCH_RESULTS})
         else:
             return render(request, 'bookchook/book_search.html', {})
     global SEARCH_RESULTS
-    SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
+    SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('series__name', 'number', 'author')
     return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
 
 @login_required
@@ -49,7 +49,7 @@ def user_search(request):
             return render(request, 'bookchook/user_list.html', {'users': search_results})
         else:
             return render(request, 'bookchook/user_search.html', {})
-    search_results = Book.objects.all().order_by('').order_by('author','series__name', 'number')
+    search_results = Book.objects.all().order_by('').order_by('series__name', 'number', 'author')
     return render(request, 'bookchook/user_list.html', {'users': search_results})
 
 @login_required
@@ -97,7 +97,7 @@ def book_new(request):
 
                 messages.error(request, None)
                 global SEARCH_RESULTS
-                SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
+                SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('series__name', 'number', 'author')
                 return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
             else:
                 #form = BookForm()
@@ -130,7 +130,7 @@ def book_edit(request, pk):
 
             messages.error(request, None)
             global SEARCH_RESULTS
-            SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('author','series__name', 'number')
+            SEARCH_RESULTS = Book.objects.filter(user=request.user).order_by('series__name', 'number', 'author')
             return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
     else:
         book = Book.objects.get(id=pk)
