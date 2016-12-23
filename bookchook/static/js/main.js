@@ -42,8 +42,13 @@ function getCookie(name) {
 }
 
 function getFormValues() {
-  document.getElementById("id_name").value = getCookie("name");
-  document.getElementById("id_author").value = getCookie("author");
+  if (document.getElementById("id_name").value == '') {
+    document.getElementById("id_name").value= getCookie("name");
+  }
+
+  if (document.getElementById("id_author").value == '') {
+    document.getElementById("id_author").value = getCookie("author");
+  }
 }
 
 function deleteCookie(name) {
