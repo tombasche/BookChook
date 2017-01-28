@@ -4,16 +4,20 @@
 function getEventListeners(){
   var n = document.getElementById('id_name');
   var a = document.getElementById('id_author');
-  n.addEventListener('blur', function() {
-    var name = document.getElementById('id_name').value;
-    console.log(name);
-    document.cookie = "name="+name;
-  });
-  a.addEventListener('blur', function() {
-    var author = document.getElementById('id_author').value;
-    console.log(author);
-    document.cookie = "author="+author;
-  });
+
+  if(n != null) {
+    n.addEventListener('blur', function() {
+      var name = document.getElementById('id_name').value;
+      document.cookie = "name="+name;
+    });
+  }
+
+  if (a != null) {
+    a.addEventListener('blur', function() {
+      var author = document.getElementById('id_author').value;
+      document.cookie = "author="+author;
+    });
+  }
 }
 
 function displaySeriesNumber() {
@@ -42,12 +46,20 @@ function getCookie(name) {
 }
 
 function getFormValues() {
-  if (document.getElementById("id_name").value == '') {
-    document.getElementById("id_name").value= getCookie("name");
+
+  var name = document.getElementById("id_name");
+  var author = document.getElementById("id_author");
+
+  if(name != null) {
+    if (document.getElementById("id_name").value == '') {
+      document.getElementById("id_name").value= getCookie("name");
+    }
   }
 
-  if (document.getElementById("id_author").value == '') {
-    document.getElementById("id_author").value = getCookie("author");
+  if (author != null) {
+    if (document.getElementById("id_author").value == '') {
+      document.getElementById("id_author").value = getCookie("author");
+    }
   }
 }
 
