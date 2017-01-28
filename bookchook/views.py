@@ -25,12 +25,17 @@ def book_list(request):
     return render(request, 'bookchook/book_list.html', {'books': SEARCH_RESULTS})
 
 @login_required
+def book_list_removed(request):
+    results = Book.objects.filter(user=request.user, status="removed")
+    return render(request, 'bookchook/book_list-removed.html', {'books' : results})
+
+@login_required
 def book_search(request):
     if request.method == "GET":
         search_query = request.GET.get('search_box', None)
         if search_query is not None:
             global SEARCH_RESULTS
-            SEARCH_RESULTS = Book.objects.filter(name__icontains=search_query, user=request.user) | Book.objects.filter(tags__name__icontains=search_query, user=request.user) | Book.objects.filter(author__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query, user=request.user).order_by('series__name', 'number', 'author')
+            SEARCH_RESULTS = Book.objects.filter(name__icontains=search_query, user=request.user, status="current") | Book.objects.filter(tags__name__icontains=search_query, user=request.user) | Book.objects.filter(author__icontains=search_query, user=request.user) | Book.objects.filter(series__name__icontains=search_query, user=request.user).order_by('series__name', 'number', 'author')
             global SEARCH_RESULTS
             SEARCH_RESULTS = SEARCH_RESULTS.distinct() #get unique records
             return render(request, 'bookchook/book_list.html', {'books': SEARCH_RESULTS})
@@ -147,6 +152,15 @@ def book_edit(request, pk):
 def book_delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
     Book.objects.filter(id=book.id).delete()
+    global SEARCH_RESULTS
+    SEARCH_RESULTS = SEARCH_RESULTS.exclude(id=book.id)
+    return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
+
+@login_required
+def book_archive(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    book.status = "removed"
+    book.save()
     global SEARCH_RESULTS
     SEARCH_RESULTS = SEARCH_RESULTS.exclude(id=book.id)
     return render(request, 'bookchook/book_list.html',  {'books': SEARCH_RESULTS})
