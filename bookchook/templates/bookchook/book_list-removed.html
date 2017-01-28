@@ -1,0 +1,39 @@
+{% extends 'bookchook/base.html' %}
+
+{% block content %}
+    <div class="container-book-list">
+      {% if books %}
+      <span><h3>Removed Books</h3><h4><a href="/">Current Books<a/></h4></span>
+      <table class="book-table sortable">
+        <th>Name</th>
+        <th>Author</th>
+        <th>Series</th>
+        <th>Number in Series</th>
+        <th>Location</th>
+        <th>Tags</th>
+        <th>Delete</th>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.name }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.series | default_if_none:"--"  }}</td>
+          <td>{{ book.number | default_if_none:"--"  }}</td>
+          <td>{{ book.location | default_if_none:"--"  }}</td>
+          <td>
+            {% for value in book.tags.all %}
+              {{ value }}
+            {% endfor %}
+          </td>
+          <td>
+            <a href="{% url 'book_delete' pk=book.pk %}" class="glyphicon glyphicon-remove" onclick="return confirm('Are you sure you would like to delete this book?');"></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="info">
+        <p class="info-text">Nah, nothing here.</p>
+      </div>
+      {% endif %}
+    </div>
+{% endblock %}
