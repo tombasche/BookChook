@@ -93,7 +93,7 @@ function wipeCookies() {
 // pressing 'a' while on the book list screen will add a new book
 document.onkeyup=function(e) {
   var e = e || window.event; // for IE to cover IEs window event-object
-  if (e.which == '65' && document.getElementsByClassName('book-table').length > 0) {
+  if (e.which == '65' && document.getElementsByClassName('container-book-list').length > 0) {
     document.getElementById('add-book').click();
   }
 }
