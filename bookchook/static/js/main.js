@@ -65,7 +65,7 @@ function wipeCookies() {
 document.onkeyup=function(e) {
   var e = e || window.event; // for IE to cover IEs window event-object
   // + to add a book
-  if (e.which == '65' && document.getElementsByClassName('book-form').length == 0) {
+  if (e.which == '65' && document.getElementsByClassName('book-table').length > 0) {
     document.getElementById('add-book').click();
   }
 }
