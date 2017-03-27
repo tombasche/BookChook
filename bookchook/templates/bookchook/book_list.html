@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container-book-list">
       {% if books %}
-      <span><h3>Current Books</h3><h4><a href="{% url 'book_list_removed' %}" class="removed-book">Removed Books<a/></h4></span>
+      <span><h3>Books</h3></span>
       <table class="book-table sortable">
         <th>Name</th>
         <th>Author</th>
@@ -11,7 +11,7 @@
         <th>Number in Series</th>
         <th>Location</th>
         <th>Tags</th>
-        <th>Archive</th>
+        <th>Comment</th>
         {% for book in books %}
         <tr>
           <td><a href="{% url 'book_edit' pk=book.pk %}" class="table-link">{{ book.name }}</a></td>
@@ -24,9 +24,7 @@
               {{ value }}
             {% endfor %}
           </td>
-          <td>
-            <a href="{% url 'book_archive' pk=book.pk %}" class="glyphicon glyphicon-remove" onclick="return confirm('Are you sure you would like to archive this book?');"></a>
-          </td>
+          <td>{{book.comment | default_if_none:"--" }} </td>
         </tr>
         {% endfor %}
       </table>

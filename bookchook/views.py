@@ -123,7 +123,6 @@ def book_edit(request, pk):
             book = form.save(commit=False)
             book.user = editBook.user
             book_tags = request.POST.get('tags', None)
-            print book_tags
             if (book.number is not None and book.series is None) and book.number >= 1:
                 messages.error(request, "Book must have series in order to have a series number")
                 return render(request, 'bookchook/book_form.html', {'form': form})

@@ -25,6 +25,7 @@ class Book(models.Model):
     number = models.IntegerField(null=True, blank=True)
     tags = TaggableManager()
     location = models.CharField(max_length=500, null=True, blank=True)
+    comment = models.CharField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return self.name
