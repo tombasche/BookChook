@@ -96,4 +96,20 @@ document.onkeyup=function(e) {
   if (e.which == '65' && document.getElementsByClassName('container-book-list').length > 0) {
     document.getElementById('add-book').click();
   }
-}
+};
+
+var sortSelect = function (select) {
+
+  $(select).html($(select).children('option').sort(function (x, y) {
+      return $(x).text().toUpperCase() < $(y).text().toUpperCase() ? -1 : 1;
+  }));
+  $(select).get(0).selectedIndex = 0;
+};
+
+//, attr, order
+$(document).ready(function () {
+
+  sortSelect('#series-dropdown');
+
+
+});
