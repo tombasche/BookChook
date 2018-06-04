@@ -86,10 +86,10 @@ def book_new(request):
         form = BookForm(request.POST)
         if form.is_valid():
             book = form.save(commit=False)
-            existingBook = Book.objects.filter(name=book.name, user=request.user)
+            existingBook = Book.objects.filter(name=book.name, user=request.user, author=book.author)
             if not existingBook:
                 book.user = request.user
-                book_tags = request.POST.get('tags', None)
+                book_tags = request.POST.get('tags', "")
 
                 if (book.number is not None and book.series is None) and book.number >= 1:
                     messages.error(request, "Book must have series in order to have a series number")
@@ -122,7 +122,7 @@ def book_edit(request, pk):
         if form.is_valid():
             book = form.save(commit=False)
             book.user = editBook.user
-            book_tags = request.POST.get('tags', None)
+            book_tags = request.POST.get('tags', "")
             if (book.number is not None and book.series is None) and book.number >= 1:
                 messages.error(request, "Book must have series in order to have a series number")
                 return render(request, 'bookchook/book_form.html', {'form': form})
