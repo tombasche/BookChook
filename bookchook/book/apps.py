@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class BookchookConfig(AppConfig):
-    name = 'bookchook'
+    name = 'book'

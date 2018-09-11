@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookchook',
-    'taggit'
+    'bookchook.book'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'bookchook.urls'
 
 TEMPLATES = [
     {
@@ -69,22 +69,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 'bookchook.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd70ipbpakogto1',
-        'USER': 'kwiesiveoztnao',
-        'PASSWORD': '',
-        'HOST': 'ec2-54-235-102-235.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///{0}'.format('db.sqlite3'))
 }
+
 
 
 # Password validation
