@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils import timezone
-from taggit.managers import TaggableManager
 
 
 class Series(models.Model):
@@ -31,7 +29,7 @@ class Book(models.Model):
     status = models.CharField(max_length=20, choices=STATUSES, default="current")
     series = models.ForeignKey(Series, null=True, blank=True, on_delete=models.CASCADE)
     number = models.IntegerField(null=True, blank=True)
-    tags = TaggableManager()
+    tags = models.CharField(max_length=2000, null=True, blank=True)
     location = models.CharField(max_length=500, null=True, blank=True)
     comment = models.CharField(max_length=2000, null=True, blank=True)
 
