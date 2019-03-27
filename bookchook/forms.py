@@ -8,7 +8,6 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ('name', 'author', 'number', 'series', 'location', 'comment')
         widgets = {
-            'series' : forms.Select(attrs={"onChange":'displaySeriesNumber()', 'onLoad': 'displaySeriesNumber()', 'id': 'series-dropdown'}),
             'number' : forms.NumberInput(attrs={"class": "series-number"})
         }
 
